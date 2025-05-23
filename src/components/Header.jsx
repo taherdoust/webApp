@@ -8,10 +8,7 @@ function Header(props) {
   return <Container fluid>
     <Navbar>
       <h1>Heap Overrun</h1>   
-      <Button onClick={()=>{
-        console.log('clicked')
-        props.setLikes(likes => likes+1)
-        }}>Like Footer</Button>
+      <Button onClick={()=>{ props.increaseLikes() }}>Like Footer</Button>
     </Navbar>
   </Container>
 

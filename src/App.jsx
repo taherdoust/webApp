@@ -13,6 +13,8 @@ function App() {
   
   const [likes,setLikes] = useState(0)
 
+  const increaseLikes = () => {setLikes(likes => likes+1)}
+
 
   const fakeQuestion = new Question(1, 'how are you', 'me@mail.com', 24, '2025-04-01')
   const fakeAnswers = []
@@ -21,7 +23,7 @@ function App() {
 
   return (
   <div>
-    <Header setLikes = {setLikes}/>
+    <Header increaseLikes={increaseLikes}/>
     <QuestionDisplay question={fakeQuestion}/>
     <AnswerDisplay answers={fakeAnswers}/>
     <Footer likes={likes} setLikes={setLikes}/>
