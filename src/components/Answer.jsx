@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap"
+import { Table, Button } from "react-bootstrap"
 
 function AnswerDisplay(props) {
     //props.answers
@@ -14,7 +14,7 @@ function AnswerDisplay(props) {
             </tr>
         </thead>
         <tbody>
-            {ans.map( a => <AnswerRow answer={a}/>)}
+            {ans.map( a => <AnswerRow key={a.id} answer={a}/>)}
         </tbody>
     </Table>
 }
@@ -22,9 +22,30 @@ function AnswerDisplay(props) {
 function AnswerRow(props) {
     const a = props.answer
     return <tr>
-        {/* <td>{a.date}</td> */}
-        <td>{a.text}</td>
+        <AnswerRowData answer={a} />
+        <AnswerActionButtons action = {a} />
+        
+        {/* <td>actions</td> */}
     </tr>
+}
+
+function AnswerRowData(props) {
+    const a = props.answer
+    return <>
+        <td>{a.date.format('YYYY-MM-DD')}</td>
+        <td>{a.text}</td>
+        <td>{a.email}</td>
+        <td>{a.score}</td>
+    </>
+}
+
+function AnswerActionButtons(props){
+    return <td>
+        <Button variant="primary">Vote</Button> <Button variant="warning">Edit</Button> <Button variant="danger">Delete</Button>
+
+
+    </td>
+
 }
 
 export default AnswerDisplay
